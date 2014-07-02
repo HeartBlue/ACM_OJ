@@ -1,0 +1,74 @@
+#include <cstdlib>  
+#include <cctype>  
+#include <cstring>  
+#include <cstdio>  
+#include <cmath>  
+#include <algorithm>  
+#include <vector>  
+#include <string>  
+#include <iostream>  
+#include <sstream>  
+#include <map>  
+#include <set>  
+#include <queue>  
+#include <stack>  
+#include <fstream>  
+#include <numeric>  
+#include <iomanip>  
+#include <bitset>  
+#include <list>  
+#include <stdexcept>  
+#include <functional>  
+#include <utility>  
+#include <ctime>
+using namespace std;
+typedef long long LL;
+typedef unsigned long long ULL;
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
+#define MEM(a,b) memset((a),(b),sizeof(a))
+const LL INF = 1000000007;
+const int N = 1e5;
+int a[N];
+int getpos(char c)
+{
+	if(c > 'I') return c-'A';
+	else return c-'A'+1;
+}
+int getrow(string str)
+{
+	str.pop_back();
+	int ret = 0;
+	for(int i = 0; i < str.length(); i++)
+	{
+		ret = ret*10+str[i]-'0';
+	}
+	return ret;
+}
+int main()
+{
+	//freopen("input.txt", "r", stdin);
+	string str;
+	while(cin >> str)
+	{
+		int pos = getpos(str[str.length()-1]);
+		int row = getrow(str);
+		if(row < 3)
+		{
+			if(pos == 1 || pos == 4) cout << "window" << endl;
+			else cout << "aisle" << endl;
+		}
+		else if(row < 21)
+		{
+			if(pos == 1 || pos == 6) cout << "window" << endl;
+			else  cout << "aisle" << endl;
+		}
+		else
+		{
+			if(pos == 1 || pos == 10) cout << "window" << endl;
+			else if(pos == 3 || pos == 4 || pos == 7 || pos == 8) cout << "aisle" << endl;
+			else cout << "neither" << endl;
+		}
+	}
+	return 0;
+}
